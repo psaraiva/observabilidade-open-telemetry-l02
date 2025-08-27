@@ -13,6 +13,8 @@ services:
       # endpoint OTLP
       - OTEL_EXPORTER_OTLP_ENDPOINT=jaeger:4318
       - APP2_BASE_URL=http://app2:8083
+    depends_on:
+      - jaeger
     restart: unless-stopped
     networks:
       - lab02_network
@@ -30,6 +32,8 @@ services:
       - PORT=8083
       # endpoint OTLP
       - OTEL_EXPORTER_OTLP_ENDPOINT=jaeger:4318
+    depends_on:
+      - jaeger
     restart: unless-stopped
     networks:
       - lab02_network

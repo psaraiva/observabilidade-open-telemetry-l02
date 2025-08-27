@@ -52,14 +52,14 @@ O fluxo da requisição é o seguinte:
 
 Existem duas maneiras principais de executar o projeto: a forma recomendada, utilizando Docker Compose para toda a stack, ou um modo híbrido para desenvolvimento.
 
-### Método 1: Docker Compose (Recomendado)
+### Método 1: Docker Compose
 
 Esta é a forma mais simples de subir todos os serviços (`app1`, `app2`, e `jaeger`) de uma vez.
 
 1.  **Clone o repositório:**
     ```bash
-    git clone <URL_DO_SEU_REPOSITORIO>
-    cd <NOME_DA_PASTA>
+    git clone git@github.com:psaraiva/l02.git
+    cd l02
     ```
 
 3.  **Configure a API Key:**
@@ -77,49 +77,9 @@ Esta é a forma mais simples de subir todos os serviços (`app1`, `app2`, e `jae
     - **Serviço Orquestrador (`app2`)**: `http://localhost:8083`
     - **Jaeger UI**: `http://localhost:16686`
 
-### Método 2: Híbrido (Go Local + Jaeger em Docker)
-
-Este método é ideal para desenvolvimento, pois permite executar o código Go localmente enquanto utiliza o Jaeger via Docker.
-
-1.  **Clone o repositório e configure a API Key** conforme os passos 1 e 2 do método anterior.
-
-2.  **Inicie o Jaeger com Docker Compose:**
-    ```bash
-    docker-compose up -d jaeger
-    ```
-    Isso iniciará apenas o contêiner do Jaeger.
-
-3.  **Execute o `app2` (Serviço Orquestrador):**
-    Abra um novo terminal, navegue até a pasta do `app2` e execute:
-    ```bash
-    cd app2
-    go run main.go
-    ```
-    O serviço `app2` iniciará na porta `8083`.
-
-4.  **Execute o `app1` (Serviço de Entrada):**
-    Abra outro terminal, navegue até a pasta do `app1` e execute:
-    ```bash
-    cd app1
-    go run main.go
-    ```
-    O serviço `app1` iniciará na porta `8080`.
-
 ## 📡 Uso da API
 
 As requisições devem ser feitas para o `app1`.
-
-### Endpoint
-
-`POST /weather-by-cep`
-
-### Corpo da Requisição (JSON)
-
-```json
-{
-    "cep": "01001-000"
-}
-```
 
 ### Exemplo de Requisição com `curl`
 
