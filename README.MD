@@ -1,4 +1,4 @@
-# Desafio de Observabilidade com OpenTelemetry
+# Observabilidade com OpenTelemetry (l02)
 
 Este projeto consiste em um sistema distribuído de dois serviços em Go que, juntos, fornecem a temperatura atual de uma localidade a partir de um CEP (Código de Endereçamento Postal). Toda a comunicação entre os serviços e com as APIs externas é instrumentada com **OpenTelemetry** para garantir observabilidade completa, com traces visualizados no **Jaeger**.
 
